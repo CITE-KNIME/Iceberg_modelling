@@ -34,11 +34,10 @@ The workflow is using the InChiKey (column needs to be named INCHI_key) and the 
 *File 4: Results of bioassay(s) for samples* <br>
 This file provides the ECy and the ICy of each sample. Please note that the sample codes must be the same as the sample codes used in file 5. Results for each sample are given row-wise. For an example see the following:
 
-<img src ="https://user-images.githubusercontent.com/108472923/191440167-f8d91b65-3283-41c2-88e7-a8eb5a2dc642.png">
+<img src ="https://user-images.githubusercontent.com/108472923/191442246-56a8e235-fbf5-4342-a95e-6a8772d4f19c.png">
 
 *File 5: Results of chemical analysis for samples* <br>
 This file lists the concentration of the chemicals analysed in the samples in ng/L. The InChiKey (column needs to be named INCHI_key) and the DTXSID (column needs to be named DTXSID) have to be provided as identifiers for the chemicals to match the data with the input from file 3. Please note that the sample codes must be the same as the sample codes used in file 4. For an example see the following:
-
 <img src ="https://user-images.githubusercontent.com/108472923/191441835-5ad28fd4-632e-4125-ad78-de558146c9b2.png">
 
 ### Principle for merging the data related to chemicals
