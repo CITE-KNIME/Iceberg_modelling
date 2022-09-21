@@ -16,25 +16,35 @@ All component nodes are highlighted in yellow and should be configured in each r
 
 ### Input files required to run the KNIME workflow (Input format is xlsx/xls)
 
+NOTE: Unless otherwise specified, the exact spelling of the column names is not important, since the columns can be specifically selected by users in the workflow.
+
 *File 1: Parameters for baseline QSAR* <br>
-Baseline toxicity can be calculated on equation (1). Thus, the parameters a, b and c, which are specific for each cell line, have to be provided. For this study, these parameters are based on the publication of Lee et al 20212.
+Baseline toxicity can be calculated on equation (1). Thus, the parameters a, b and c, which are specific for each cell line, have to be provided. For this study, these parameters are based on the publication of Lee et al 2021 2. The data have to be structured as follows:
+
+<img src ="https://user-images.githubusercontent.com/108472923/191439029-4c167d00-9af9-438a-a714-85c6c41bc535.png">
 
 *File 2: Parameters for references of bioassays* <br>
-In order to calculate the REPi and the BEQbio, the EC10 or ECIR1.5 as well as the molecular weight of the respective reference chemicals need to be provided. 
+In order to calculate the REPi and the BEQbio, the EC10 or ECIR1.5 as well as the molecular weight of the respective reference chemicals need to be provided. The data have to be structured as follows:
+
+<img src ="https://user-images.githubusercontent.com/108472923/191439267-b47e16e8-e5b5-425f-963f-809fc0f3969a.png">
 
 *File 3. Chemical identifier, logDlip/w, effect and cytotoxicity results of single chemicals in bioassays* <br>
-The workflow is using the InChiKey (column needs to be named INCHI_key) and the DTXSID (column needs to be named DTXSID) as identifiers to match the results of the bioassays for the single chemicals with the chemicals analysed. In addition, this file has to contain the log Dlip/w, the ECy and the ICy for each chemical and each assay of interest.
+The workflow is using the InChiKey (column needs to be named INCHI_key) and the DTXSID (column needs to be named DTXSID) as identifiers to match the results of the bioassays for the single chemicals with the chemicals analysed. In addition, this file has to contain the log Dlip/w, the ECy and the ICy for each chemical and each assay of interest. The Excel tabel has to start with cell A1.
 
 *File 4: Results of bioassay(s) for samples* <br>
-This file provides the ECy and the ICy of each sample. Please note that the sample codes must be the same as the sample codes used in file 5.
+This file provides the ECy and the ICy of each sample. Please note that the sample codes must be the same as the sample codes used in file 5. Results for each sample are given row-wise. For an example see the following:
+
+<img src ="https://user-images.githubusercontent.com/108472923/191440167-f8d91b65-3283-41c2-88e7-a8eb5a2dc642.png">
 
 *File 5: Results of chemical analysis for samples* <br>
-This file lists the concentration of the chemicals analysed in the samples in ng/L. The InChiKey (column needs to be named INCHI_key) and the DTXSID (column needs to be named DTXSID) have to be provided as identifiers for the chemicals to match the data with the input from file 3. Please note that the sample codes must be the same as the sample codes used in file 4.
+This file lists the concentration of the chemicals analysed in the samples in ng/L. The InChiKey (column needs to be named INCHI_key) and the DTXSID (column needs to be named DTXSID) have to be provided as identifiers for the chemicals to match the data with the input from file 3. Please note that the sample codes must be the same as the sample codes used in file 4. For an example see the following:
+
+<img src ="https://user-images.githubusercontent.com/108472923/191441537-6027a39e-5fe4-4695-b908-5a34b3da4088.png">
 
 ### Principle for merging the data related to chemicals
 The input from file 3 and 5 contains data per chemical. In order to join these data sets the InChiKey and the DTXSID have to be provided as identifiers. To make the matching based on the InChiKey more robust only the 1st block of the InChiKey is used. In order to match chemicals for which no InChiKey is available the data are also matched based on the DTXSID. The two different joins are then concatenated and duplicates originating from the two-tier joining process are automatically curated. Chemicals which do not have any of the two identifiers mentioned above are not merged at all and are excluded from the data set. 
 
-<img src ="https://user-images.githubusercontent.com/108472923/176864918-6d98f420-7dc6-4c09-82f7-6bc468e83391.png">
+<img src ="https://user-images.githubusercontent.com/108472923/191440867-8014f024-6ce5-457c-b1cc-8cd701684464.png">
 
 ### Equations used for the Iceberg Modelling
 For more detailed information on the iceberg modelling and the equations refer to Neale et al 2020 and Lee et al 2021.<br> 
