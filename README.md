@@ -39,7 +39,7 @@ This file provides the ECy and the ICy of each sample. Please note that the samp
 *File 5: Results of chemical analysis for samples* <br>
 This file lists the concentration of the chemicals analysed in the samples in ng/L. The InChiKey (column needs to be named INCHI_key) and the DTXSID (column needs to be named DTXSID) have to be provided as identifiers for the chemicals to match the data with the input from file 3. Please note that the sample codes must be the same as the sample codes used in file 4. For an example see the following:
 
-<img src ="https://user-images.githubusercontent.com/108472923/191441835-5ad28fd4-632e-4125-ad78-de558146c9b2.png" width = 80%>
+<img src ="https://user-images.githubusercontent.com/108472923/191441835-5ad28fd4-632e-4125-ad78-de558146c9b2.png">
 
 ### Principle for merging the data related to chemicals
 The input from file 3 and 5 contains data per chemical. In order to join these data sets the InChiKey and the DTXSID have to be provided as identifiers. To make the matching based on the InChiKey more robust only the 1st block of the InChiKey is used. In order to match chemicals for which no InChiKey is available the data are also matched based on the DTXSID. The two different joins are then concatenated and duplicates originating from the two-tier joining process are automatically curated. Chemicals which do not have any of the two identifiers mentioned above are not merged at all and are excluded from the data set. 
